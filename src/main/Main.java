@@ -1,6 +1,6 @@
-/**
- * Created by gglcrash on 03.11.2016.
- */
+package main;
+
+
 public class Main {
     public static void main(String [ ] args)
     {
@@ -13,8 +13,7 @@ public class Main {
         c[4]=6;
         c[5]=5;
         c[6]=4;
-        c[7]=3;
-        c[8]=2;
+
 
         DynamicArray myArray = new DynamicArray(c);
 
@@ -28,6 +27,11 @@ public class Main {
         myArray.insert(8,12);
         myArray.printArray();
         myArray.delete(7);
+        myArray.printArray();
+
+        myArray.quickSort(new MyComparator(true));
+        myArray.printArray();
+        myArray.quickSort(new MyComparator(false));
         myArray.printArray();
     }
 }

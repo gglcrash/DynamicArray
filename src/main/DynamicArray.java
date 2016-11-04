@@ -1,8 +1,8 @@
+package main;
+
 import java.util.Comparator;
 
-/**
- * Created by gglcrash on 01.11.2016.
- */
+
 public class DynamicArray {
     final static int DEFAULT_SIZE = 5;
     private int currentCount = 0;
@@ -20,7 +20,7 @@ public class DynamicArray {
 
     public DynamicArray(int[] mas){
         array = mas;
-        currentCount = checkCurrentCountOfElements(mas);
+        currentCount = mas.length;
     }
 
     public DynamicArray(int count){
@@ -65,18 +65,36 @@ public class DynamicArray {
         array[currentCount-1]=0;
     }
 
-    public void sort(Comparator<Integer> comparator){
-
+    public void quickSort(Comparator<Integer> comparator){
+        int startIndex = 0;
+        int endIndex = array.length - 1;
+        doSort(startIndex, endIndex,comparator);
     }
 
-    private int checkCurrentCountOfElements(int[] mas){
-        int currCount = 0;
-        for (int i:mas){
-            if (i!=0){
-                currCount++;
+    private void doSort(int start, int end,Comparator<Integer> comparator) {
+        if (start >= end)
+            return;
+        int i = start, j = end;
+        int cur = i - (i - j) / 2;
+        while (i < j) {
+            while (i < cur && (comparator.compare(new Integer(array[i]),new Integer(array[cur]))!=-1)) {
+                i++;
+            }
+            while (j > cur && (comparator.compare(new Integer(array[cur]),new Integer(array[j]))!=-1)) {
+                j--;
+            }
+            if (i < j) {
+                int temp = array[i];
+                array[i] = array[j];
+                array[j] = temp;
+                if (i == cur)
+                    cur = j;
+                else if (j == cur)
+                    cur = i;
             }
         }
-        return currCount;
+        doSort(start, cur,comparator);
+        doSort(cur+1, end,comparator);
     }
 
     private void extendArray(){
