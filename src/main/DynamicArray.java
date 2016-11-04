@@ -8,14 +8,12 @@ public class DynamicArray {
     private int currentCount = 0;
     private int[] array;
 
-    public int getCurrentCount(){
-        return currentCount;
-    }
-    public void printArray(){
-        for(int i = 0; i<array.length;i++){
-            System.out.print(array[i]+" ");
+    public int getValueByIndex(int index){
+        if(index>array.length-1){
+            return 0;
+        } else {
+            return array[index];
         }
-        System.out.println();
     }
 
     public DynamicArray(int[] mas){
@@ -43,12 +41,15 @@ public class DynamicArray {
     }
 
     public void insert(int position, int value){
-        if(currentCount==array.length) {
-            extendArray();
+        if(position>array.length){
+            add(value);
+        }else {
+            if(currentCount==array.length) {
+                extendArray();
+            }
+            currentCount++;
+            insertion(position,value);
         }
-        currentCount++;
-        insertion(position,value);
-
     }
 
     private void insertion(int position,int value){

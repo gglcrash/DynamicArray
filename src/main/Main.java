@@ -2,7 +2,7 @@ package main;
 
 
 public class Main {
-    public static void main(String [ ] args)
+  /*  public static void main(String [ ] args)
     {
 
         int[] c = new int[10];
@@ -16,8 +16,6 @@ public class Main {
 
 
         DynamicArray myArray = new DynamicArray(c);
-
-        System.out.println(myArray.getCurrentCount());
 
         myArray.printArray();
         myArray.add(66);
@@ -33,5 +31,5 @@ public class Main {
         myArray.printArray();
         myArray.quickSort(new MyComparator(false));
         myArray.printArray();
-    }
+    }*/
 }
