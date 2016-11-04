@@ -1,7 +1,7 @@
 package tests;
 
-import main.AscendingComparator;
-import main.DescendingComparator;
+import main.Comparators.Ascending;
+import main.Comparators.Descending;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -40,9 +40,9 @@ public class ParametrizedClassTest {
     public void testComparator() {
         Comparator<Integer> testComp;
         if(ascend){
-            testComp = new AscendingComparator();
+            testComp = new Ascending();
         } else {
-            testComp = new DescendingComparator();
+            testComp = new Descending();
         }
         assertEquals(res, testComp.compare(value1, value2));
     }

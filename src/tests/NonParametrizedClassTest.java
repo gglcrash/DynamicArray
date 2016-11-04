@@ -1,6 +1,6 @@
 package tests;
-import main.AscendingComparator;
-import main.DescendingComparator;
+import main.Comparators.Ascending;
+import main.Comparators.Descending;
 import main.DynamicArray;
 import org.junit.*;
 import org.junit.runner.JUnitCore;
@@ -120,7 +120,7 @@ public class NonParametrizedClassTest {
         myArray.add(5);
         myArray.add(4);
         myArray.add(1);
-        myArray.quickSort(new AscendingComparator());
+        myArray.quickSort(new Ascending());
 
         assertArrayEquals(new int[]{1,2,3,4,5,6,7}, myArray.getArray());
     }
@@ -135,7 +135,7 @@ public class NonParametrizedClassTest {
         myArray.add(5);
         myArray.add(4);
         myArray.add(1);
-        myArray.quickSort(new DescendingComparator());
+        myArray.quickSort(new Descending());
 
         assertArrayEquals(new int[]{7,6,5,4,3,2,1}, myArray.getArray());
     }
