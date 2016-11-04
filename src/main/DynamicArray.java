@@ -16,6 +16,10 @@ public class DynamicArray {
         }
     }
 
+    public int[] getArray(){
+        return array;
+    }
+
     public DynamicArray(int[] mas){
         array = mas;
         currentCount = mas.length;

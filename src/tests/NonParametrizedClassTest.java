@@ -1,25 +1,34 @@
 package tests;
+import main.AscendingComparator;
+import main.DescendingComparator;
 import main.DynamicArray;
 import org.junit.*;
 import org.junit.runner.JUnitCore;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class TestingClass {
+public class NonParametrizedClassTest {
+
     public static void main(String[] args) {
         JUnitCore core = new JUnitCore();
         core.addListener(new TestListener());
-        core.run(TestingClass.class);
+        core.run(NonParametrizedClassTest.class);
+
+        JUnitCore core2 = new JUnitCore();
+        core2.addListener(new TestListener());
+        core2.run(ParametrizedClassTest.class);
     }
 
     @BeforeClass
     public static void allTestsStarted() {
-        System.out.println("All tests started");
+        System.out.println("All non-parametrized tests started");
     }
 
     @AfterClass
     public static void allTestsFinished() {
-        System.out.println("All tests finished");
+        System.out.println("All non-parametrized tests finished");
+        System.out.println();
     }
 
     @Test
@@ -99,6 +108,36 @@ public class TestingClass {
         myArray.add(7);
 
         assertEquals(7,myArray.getValueByIndex(6));
+    }
+
+    @Test
+    public void ascendSortTest(){
+        DynamicArray myArray = new DynamicArray(7);
+        myArray.add(6);
+        myArray.add(3);
+        myArray.add(7);
+        myArray.add(2);
+        myArray.add(5);
+        myArray.add(4);
+        myArray.add(1);
+        myArray.quickSort(new AscendingComparator());
+
+        assertArrayEquals(new int[]{1,2,3,4,5,6,7}, myArray.getArray());
+    }
+
+    @Test
+    public void descendSortTest(){
+        DynamicArray myArray = new DynamicArray(7);
+        myArray.add(6);
+        myArray.add(3);
+        myArray.add(7);
+        myArray.add(2);
+        myArray.add(5);
+        myArray.add(4);
+        myArray.add(1);
+        myArray.quickSort(new DescendingComparator());
+
+        assertArrayEquals(new int[]{7,6,5,4,3,2,1}, myArray.getArray());
     }
 }
 
