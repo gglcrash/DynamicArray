@@ -1,21 +1,20 @@
 ##Main package diagram:
 ```
 @startuml
-interface Comparator{
+interface Comparator{ }
 
-}
 class main.comparators.Ascending{
 public int compare (Integer value1, Integer value2);
 }
+
 class main.comparators.Descending{
 public int compare (Integer value1, Integer value2);
 }
-Comparator <|-- main.comparators.Ascending
 
+Comparator <|-- main.comparators.Ascending
 Comparator <|-- main.comparators.Descending
 
 class main.DynamicArray {
-
 private final static int DEFAULT_SIZE = 5;
 private int currentCount = 0;
 private int[] array;
@@ -62,7 +61,6 @@ public ParametrizedClassTest(int val1, int val2, int result, boolean ascending);
 public static Collection<Object[]> data();
 public void testComparator();
 }
-
 
 class test.NonParametrizedClassTest{
 public static void main(String[] args);
