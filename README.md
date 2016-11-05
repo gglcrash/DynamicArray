@@ -1,4 +1,4 @@
-Main package diagram:
+##Main package diagram:
 
 @startuml
 interface Comparator{
@@ -39,7 +39,7 @@ public int[] getArray();
 @enduml
 
 
-Test package diagram:
+##Test package diagram:
 
 @startuml
 class test.TestListener{
