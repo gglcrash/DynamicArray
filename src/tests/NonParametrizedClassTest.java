@@ -139,6 +139,18 @@ public class NonParametrizedClassTest {
 
         assertArrayEquals(new int[]{7,6,5,4,3,2,1}, myArray.getArray());
     }
+
+    @Test
+    public void reduceArrayTest(){
+        int[] tmpArray = new int[]{1,2,3,4,5,6,7,8,9};
+        DynamicArray myArray = new DynamicArray(tmpArray);
+        myArray.delete(1);
+        myArray.delete(2);
+        myArray.delete(3);
+        myArray.delete(4);
+        myArray.delete(5);
+        assertEquals(6,myArray.getArray().length);
+    }
 }
 
 

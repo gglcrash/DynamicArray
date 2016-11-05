@@ -68,6 +68,8 @@ public class DynamicArray {
             array[i] = array[i+1];
         }
         array[currentCount-1]=0;
+        currentCount--;
+        checkResizingOfArray();
     }
 
     public void quickSort(Comparator<Integer> comparator){
@@ -82,10 +84,10 @@ public class DynamicArray {
         int i = start, j = end;
         int cur = i - (i - j) / 2;
         while (i < j) {
-            while (i < cur && (comparator.compare(new Integer(array[i]),new Integer(array[cur]))!=-1)) {
+            while (i < cur && (comparator.compare(array[i],array[cur])!=-1)) {
                 i++;
             }
-            while (j > cur && (comparator.compare(new Integer(array[cur]),new Integer(array[j]))!=-1)) {
+            while (j > cur && (comparator.compare(array[cur],array[j])!=-1)) {
                 j--;
             }
             if (i < j) {
@@ -105,6 +107,21 @@ public class DynamicArray {
     private void extendArray(){
         int[] tmpArray = new int[array.length*3/2];
         for(int i = 0; i < array.length;i++){
+            tmpArray[i]=array[i];
+        }
+        array = null;
+        array = tmpArray;
+    }
+
+    private void checkResizingOfArray(){
+        if(2*currentCount<array.length){
+            reduceArray();
+        }
+    }
+
+    private void reduceArray(){
+        int[] tmpArray = new int[array.length*2/3];
+        for(int i = 0; i < tmpArray.length;i++){
             tmpArray[i]=array[i];
         }
         array = null;
