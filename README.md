@@ -1,5 +1,5 @@
 ##Main package diagram:
-'''
+```
 @startuml
 interface Comparator{
 
@@ -37,10 +37,10 @@ public int getValueByIndex(int index);
 public int[] getArray();
 }
 @enduml
-'''
+```
 
 ##Test package diagram:
-'''
+```
 @startuml
 class test.TestListener{
 public void testStarted(Description desc);
@@ -81,5 +81,5 @@ public void reduceArrayTest();
 public void clearTest();
 }
 @enduml
-'''
+```
 
