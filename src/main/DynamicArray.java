@@ -5,7 +5,7 @@ import java.util.Comparator;
 
 public class DynamicArray {
     final static int DEFAULT_SIZE = 5;
-    private int currentCount = 0;
+    private int currentCount;
     private int[] array;
 
     public int getValueByIndex(int index){
