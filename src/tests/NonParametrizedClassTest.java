@@ -1,6 +1,6 @@
 package tests;
-import main.Comparators.Ascending;
-import main.Comparators.Descending;
+import main.comparators.Ascending;
+import main.comparators.Descending;
 import main.DynamicArray;
 import org.junit.*;
 import org.junit.runner.JUnitCore;

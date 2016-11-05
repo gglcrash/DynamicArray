@@ -1,7 +1,7 @@
 package tests;
 
-import main.Comparators.Ascending;
-import main.Comparators.Descending;
+import main.comparators.Ascending;
+import main.comparators.Descending;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
