@@ -127,4 +127,10 @@ public class DynamicArray {
         array = null;
         array = tmpArray;
     }
+
+    public void clear(){
+        int[] tmpArray = new int[DEFAULT_SIZE];
+        array = null;
+        array = tmpArray;
+    }
 }
