@@ -22,6 +22,16 @@ public class ParametrizedClassTest {
     private int res;
     private boolean ascend;
 
+    @BeforeClass
+    public static void allTestsStarted() {
+        System.out.println("All parametrized tests started");
+    }
+
+    @AfterClass
+    public static void allTestsFinished() {
+        System.out.println("All parametrized tests finished");
+    }
+
     public ParametrizedClassTest(int val1, int val2, int result, boolean ascending) {
         value1 = val1;
         value2 = val2;
@@ -47,13 +57,4 @@ public class ParametrizedClassTest {
         assertEquals(res, testComp.compare(value1, value2));
     }
 
-    @BeforeClass
-    public static void allTestsStarted() {
-        System.out.println("All parametrized tests started");
-    }
-
-    @AfterClass
-    public static void allTestsFinished() {
-        System.out.println("All parametrized tests finished");
-    }
 }

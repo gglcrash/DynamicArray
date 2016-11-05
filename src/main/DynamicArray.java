@@ -4,21 +4,10 @@ import java.util.Comparator;
 
 
 public class DynamicArray {
-    final static int DEFAULT_SIZE = 5;
+    private final static int DEFAULT_SIZE = 5;
     private int currentCount;
     private int[] array;
 
-    public int getValueByIndex(int index){
-        if(index>array.length-1){
-            return 0;
-        } else {
-            return array[index];
-        }
-    }
-
-    public int[] getArray(){
-        return array;
-    }
 
     public DynamicArray(int[] mas){
         array = mas;
@@ -70,6 +59,12 @@ public class DynamicArray {
         array[currentCount-1]=0;
         currentCount--;
         checkResizingOfArray();
+    }
+
+    public void clear(){
+        int[] tmpArray = new int[DEFAULT_SIZE];
+        array = null;
+        array = tmpArray;
     }
 
     public void quickSort(Comparator<Integer> comparator){
@@ -128,9 +123,15 @@ public class DynamicArray {
         array = tmpArray;
     }
 
-    public void clear(){
-        int[] tmpArray = new int[DEFAULT_SIZE];
-        array = null;
-        array = tmpArray;
+    public int getValueByIndex(int index){
+        if(index>array.length-1){
+            return 0;
+        } else {
+            return array[index];
+        }
+    }
+
+    public int[] getArray(){
+        return array;
     }
 }
