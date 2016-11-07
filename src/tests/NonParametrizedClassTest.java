@@ -5,6 +5,8 @@ import main.DynamicArray;
 import org.junit.*;
 import org.junit.runner.JUnitCore;
 
+import java.util.Iterator;
+
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
@@ -33,6 +35,7 @@ public class NonParametrizedClassTest {
 
     @Test
     public void addTest(){
+        System.out.println("Add method test.\n"+"Add '2' into new empty array.");
         DynamicArray<Integer> myArray = new DynamicArray<>();
         myArray.add(2);
 
@@ -41,6 +44,7 @@ public class NonParametrizedClassTest {
 
     @Test
     public void addTest2(){
+        System.out.println("Add method test.\n"+"Add '2,3,4' into new array of size 15.");
         DynamicArray<Integer> myArray = new DynamicArray<>(15);
         myArray.add(2);
         myArray.add(3);
@@ -51,6 +55,8 @@ public class NonParametrizedClassTest {
 
     @Test
     public void addTest3(){
+
+        System.out.println("Add method test.\n"+"Create dynamic array from the existing array.");
         Integer[] array = new Integer[10];
         array[0] = 1;
         array[1] = 2;
@@ -62,6 +68,7 @@ public class NonParametrizedClassTest {
 
     @Test
     public void insertTest(){
+        System.out.println("Insert method test.\n"+"Insert '14' into 3 position in the array.");
         DynamicArray<Integer> myArray = new DynamicArray<>(15);
         myArray.add(2);
         myArray.add(3);
@@ -74,6 +81,8 @@ public class NonParametrizedClassTest {
 
     @Test
     public void insertTest2(){
+        System.out.println("Add method test.\n"+"Insert '20' into position, that is greater than array length." +
+                "excepting result - adding in the end of the array.");
         DynamicArray<Integer> myArray = new DynamicArray<>(10);
         myArray.add(2);
         myArray.add(3);
@@ -86,6 +95,8 @@ public class NonParametrizedClassTest {
 
     @Test
     public void deleteTest(){
+
+        System.out.println("Delete method test.\n"+"Delete value from 3 position in the array.");
         DynamicArray<Integer> myArray = new DynamicArray<>(15);
         myArray.add(2);
         myArray.add(3);
@@ -98,6 +109,7 @@ public class NonParametrizedClassTest {
 
     @Test
     public void extendTest(){
+        System.out.println("Extend array method test.\n"+"Adding 7 elements into array of size 5.");
         DynamicArray<Integer> myArray = new DynamicArray<>(5);
         myArray.add(1);
         myArray.add(2);
@@ -112,6 +124,7 @@ public class NonParametrizedClassTest {
 
     @Test
     public void ascendSortTest(){
+        System.out.println("Ascend sort method test.\n"+"Ascending sort of the {6,3,7,2,5,4,1} array.");
         DynamicArray<Integer> myArray = new DynamicArray<>(7);
         myArray.add(6);
         myArray.add(3);
@@ -127,6 +140,7 @@ public class NonParametrizedClassTest {
 
     @Test
     public void descendSortTest(){
+        System.out.println("Descend sort method test.\n"+"Descending sort of the {6,3,7,2,5,4,1} array.");
         DynamicArray<Integer> myArray = new DynamicArray<>(7);
         myArray.add(6);
         myArray.add(3);
@@ -142,6 +156,7 @@ public class NonParametrizedClassTest {
 
     @Test
     public void reduceArrayTest(){
+        System.out.println("Reduce array method test.\n"+"Deleting 5 elements from array of size 9.");
         Integer[] tmpArray = new Integer[]{1,2,3,4,5,6,7,8,9};
         DynamicArray myArray = new DynamicArray<>(tmpArray);
         myArray.delete(1);
@@ -155,11 +170,25 @@ public class NonParametrizedClassTest {
 
     @Test
     public void clearTest(){
+        System.out.println("Clear method test.\n"+"Clearing of the existing dynamic array.");
         Integer[] tmpArray = new Integer[]{1,2,3,4,5,6,7,8,9,10,11};
         DynamicArray myArray = new DynamicArray<>(tmpArray);
         myArray.clear();
 
         assertEquals(5,myArray.getArray().length);
+    }
+
+    @Test
+    public void iteratorTest(){
+        System.out.println("Iterator method test.\n"+"Checking iterator of the dynamic array.");
+        Integer[] tmpArray = new Integer[]{1,2,3,4,5,6,7,8,9,10,11};
+        DynamicArray myArray = new DynamicArray<>(tmpArray);
+        Iterator<Integer> iter =  myArray.iterator();
+        Integer a = null;
+        for(int i = 0; i<4; i++){
+            a = iter.next();
+        }
+        assertEquals(4,a.intValue());
     }
 }
 

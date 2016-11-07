@@ -54,6 +54,8 @@ public class ParametrizedClassTest {
         } else {
             testComp = new Descending();
         }
+        System.out.println(testComp.getClass().getCanonicalName()+" comparator test.\n"+"Info:\nComparing "+value1+" and "+
+        value2+" with expected result = "+res);
         assertEquals(res, testComp.compare(value1, value2));
     }
 

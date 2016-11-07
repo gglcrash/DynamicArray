@@ -1,9 +1,10 @@
 package main;
 
 import java.util.Comparator;
+import java.util.Iterator;
 
 
-public class DynamicArray<T> {
+public class DynamicArray<T> implements Iterable<T> {
     private final static int DEFAULT_SIZE = 5;
     private int currentCount;
     private T[] array;
@@ -133,5 +134,14 @@ public class DynamicArray<T> {
 
     public T[] getArray(){
         return array;
+    }
+
+    public int getLength(){
+        return currentCount;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new DynamicArrayIterator<>(this);
     }
 }

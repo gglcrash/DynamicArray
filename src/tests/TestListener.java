@@ -19,7 +19,7 @@ class TestListener extends RunListener {
 
     @Override
     public void testFailure(Failure fail) {
-        System.out.println("Failed:" + fail.getDescription().getDisplayName() + " [" + fail.getMessage() + "]");
+        System.out.println("Test Failed:" + fail.getDescription().getDisplayName() + " [" + fail.getMessage() + "]");
         System.out.println();
     }
 }
