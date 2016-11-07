@@ -3,28 +3,28 @@ package main;
 import java.util.Comparator;
 
 
-public class DynamicArray {
+public class DynamicArray<T> {
     private final static int DEFAULT_SIZE = 5;
     private int currentCount;
-    private int[] array;
+    private T[] array;
 
 
-    public DynamicArray(int[] mas){
+    public DynamicArray(T[] mas){
         array = mas;
         currentCount = mas.length;
     }
 
     public DynamicArray(int count){
-        array = new int[count];
+        array = (T[])new Object[count];
         currentCount = 0;
     }
 
     public DynamicArray(){
-        array = new int[DEFAULT_SIZE];
+        array = (T[])new Object[DEFAULT_SIZE];
         currentCount = 0;
     }
 
-    public void add(int value){
+    public void add(T value){
         if(currentCount==array.length) {
             extendArray();
         }
@@ -33,7 +33,7 @@ public class DynamicArray {
 
     }
 
-    public void insert(int position, int value){
+    public void insert(int position, T value){
         if(position>array.length){
             add(value);
         }else {
@@ -45,7 +45,7 @@ public class DynamicArray {
         }
     }
 
-    private void insertion(int position,int value){
+    private void insertion(int position,T value){
         for(int i = currentCount-1; i>position-2;i--){
             array[i+1] = array[i];
         }
@@ -56,24 +56,24 @@ public class DynamicArray {
         for(int i = position-1; i<currentCount-1;i++){
             array[i] = array[i+1];
         }
-        array[currentCount-1]=0;
+        array[currentCount-1]=null;
         currentCount--;
         checkResizingOfArray();
     }
 
     public void clear(){
-        int[] tmpArray = new int[DEFAULT_SIZE];
+        T[] tmpArray = (T[])new Object[DEFAULT_SIZE];
         array = null;
         array = tmpArray;
     }
 
-    public void quickSort(Comparator<Integer> comparator){
+    public void quickSort(Comparator<T> comparator){
         int startIndex = 0;
         int endIndex = array.length - 1;
         doSort(startIndex, endIndex,comparator);
     }
 
-    private void doSort(int start, int end,Comparator<Integer> comparator) {
+    private void doSort(int start, int end,Comparator<T> comparator) {
         if (start >= end)
             return;
         int i = start, j = end;
@@ -86,7 +86,7 @@ public class DynamicArray {
                 j--;
             }
             if (i < j) {
-                int temp = array[i];
+                T temp = array[i];
                 array[i] = array[j];
                 array[j] = temp;
                 if (i == cur)
@@ -100,7 +100,7 @@ public class DynamicArray {
     }
 
     private void extendArray(){
-        int[] tmpArray = new int[array.length*3/2];
+        T[] tmpArray = (T[])new Object[array.length*3/2];
         for(int i = 0; i < array.length;i++){
             tmpArray[i]=array[i];
         }
@@ -115,7 +115,7 @@ public class DynamicArray {
     }
 
     private void reduceArray(){
-        int[] tmpArray = new int[array.length*2/3];
+        T[] tmpArray = (T[])new Object[array.length*2/3];
         for(int i = 0; i < tmpArray.length;i++){
             tmpArray[i]=array[i];
         }
@@ -123,15 +123,15 @@ public class DynamicArray {
         array = tmpArray;
     }
 
-    public int getValueByIndex(int index){
+    public T getValueByIndex(int index){
         if(index>array.length-1){
-            return 0;
+            return null;
         } else {
             return array[index];
         }
     }
 
-    public int[] getArray(){
+    public T[] getArray(){
         return array;
     }
 }

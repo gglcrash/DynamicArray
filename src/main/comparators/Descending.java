@@ -3,7 +3,7 @@ package main.comparators;
 import java.util.Comparator;
 
 
-public class Descending implements Comparator<Integer> {
+public class Descending<T> implements Comparator<Integer> {
 
     @Override
     public int compare(Integer value1, Integer value2) {
